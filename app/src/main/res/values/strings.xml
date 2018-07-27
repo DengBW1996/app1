@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="scan_button_text">Tap to scan</string>
+    <string name="scan_view_name">名称：</string>
+    <string name="scan_view_discribe">描述：</string>
+    <string name="home_title_left">Scan</string>
+    <string name="home_title_right">Favorite</string>
+    <string name="msg_camera_framework_bug">相机被占用或没有相机权限，请检查</string>
+    <string name="button_ok">退出</string>
+    <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
 </resources>

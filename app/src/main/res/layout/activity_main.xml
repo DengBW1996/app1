@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,63 +18,90 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#EEEEEE"
-            app:titleTextColor="#000"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#EEEEEE"
+                    app:titleTextColor="#000"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"/>
+            </android.support.design.widget.AppBarLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
                 tools:context=".MainActivity">
+
                 <LinearLayout
                     android:id="@+id/linear_layout"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="50.0dp"
-                    android:background="#00BCD4"
-                    >
-                    <TextView
-                        android:id="@+id/scan_layout"
+                    android:background="#00BCD4">
+
+                    <LinearLayout
+                        android:id="@+id/text_layout"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:text="Scan"
-                        android:textColor="#000"
-                        android:textSize="20dp"
-                        android:background="#00BCD4"/>
-                    
-                    <TextView
-                        android:id="@+id/favorite_layout"
+                        android:layout_height="48sp">
+
+                        <TextView
+                            android:id="@+id/scan_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="@string/home_title_left"
+                            android:textColor="#000"
+                            android:textSize="20dp"
+                            android:background="@drawable/selector"/>
+
+                        <TextView
+                            android:id="@+id/favorite_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="@string/home_title_right"
+                            android:textColor="#000"
+                            android:textSize="20dp"
+                            android:background="@drawable/selector"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/scroll_bar"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:text="Favorite"
-                        android:textColor="#000"
-                        android:textSize="20dp"
-                        android:background="#000"/>
+                        android:layout_height="2sp"
+                        android:scaleType="matrix"
+                        android:src="@drawable/scrollbar"/>
                 </LinearLayout>
-                
-                <ImageView
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="2sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true" />
             </RelativeLayout>
         </LinearLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu"
+            app:headerLayout="@layout/nav_header"/>
+
+    </android.support.v4.widget.DrawerLayout>
     </FrameLayout>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
-        app:headerLayout="@layout/nav_header"/>
-
-
-</android.support.v4.widget.DrawerLayout>
+</android.support.design.widget.CoordinatorLayout>
